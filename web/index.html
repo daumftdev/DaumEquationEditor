@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+	<meta name="google" content="notranslate">
+	<meta name="robots" content="none">
+	<meta name="description" content="Daum Equation Editor">
+	<meta name="keywords" content="Daum,Equation,Editor,Formula,Math">
+	<meta name="author" content="Daum Communications">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Daum Equation Editor</title>
+	<style type="text/css" media="screen">
+		html,body,#flashContent{width:100%;height:100%;}
+		body{margin:0;padding:0;overflow:hidden;text-align:center;background-color:#000000;}
+		object:focus{outline:none;}
+		a:link{color:#cfcfcf;}
+		a:visited{color:#cfcfcf;}
+		a:hover{color:#cfcfcf;}
+		a:active{color:#cfcfcf;}
+		#flashContent{display:none;}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+	<script type="text/javascript">
+
+	// You will modify next two functions.
+        function pencil_insert_equation(equationData, texCode) {
+			//console.log(texCode);
+			pencil_close();
+        }
+        
+        function pencil_close() {
+        }
+
+	// Don't modify any codes.
+	// ------------------------------------------------------------------------
+
+	var swf_name = "Pencil_publicedition";
+	var history_data = "";
+
+	function pencil_ref(){
+		return document.getElementById(swf_name);
+	}
+
+	function pencil_load_history_data(data){
+		pencil_ref().pencil_load_history_data(data);
+	}
+
+	function pencil_init_focus(){
+		pencil_ref().focus();
+	}
+
+	function getFlashvars(){
+		var language = "en_US";
+		if(navigator){
+			if(navigator.language) language = navigator.language;
+			else if(navigator.browserLanguage) language = navigator.browserLanguage;
+			else if(navigator.systemLanguage) language = navigator.systemLanguage;
+			else if(navigator.userLanguage) language = navigator.userLanguage;
+			else;
+           	}
+		if(language.substring(0, 2) != "ko" && language.substring(0, 2) != "en") language = "en_US"
+		return {
+			"service" : "daumEquationEditor",
+			"locale" : language,
+		};
+	}
+
+	var params = {};
+	params.quality = "high";
+	params.bgcolor = "#000000";
+	params.allowscriptaccess = "always";
+	params.allowfullscreen = "false";
+	params.allowNetworking = "all";
+
+	var attributes = {};
+	attributes.id = swf_name;
+	attributes.name = swf_name;
+	attributes.align = "middle";
+
+	var flashvars = getFlashvars();
+	flashvars.history_data = history_data;
+
+	if(swfobject){
+		swfobject.embedSWF("pencil.swf", "flashContent","100%", "100%", "10.0.0", "", flashvars, params, attributes);
+	}
+
+	swfobject.createCSS("#flashContent", "display:block;");
+	</script>
+	<!--[if IE]>
+	<script type="text/javascript">
+	function fixOutOfMemoryError() {
+		__flash_unloadHandler = function(){};
+		__flash_savedUnloadHandler = function(){};
+	}
+	if(window.attachEvent) {
+		window.attachEvent("onbeforeunload", fixOutOfMemoryError);
+	}
+	</script>
+	<![endif]-->
+</head>
+<body>
+	<div id="flashContent">
+		<div style="width:450px;border:solid 1px #4d4d4d;background-color:#212121;color:#cfcfcf;margin:200px auto 0;font-size:13px;padding:20px;letter-spacing:0px;line-height:140%;">
+			<div><span><img src="pencil.png" alt="app icon" /></span><span style="margin-left:30px;"><img src="flashplayer.png" alt="flash player icon"/></span></div>
+			<div style="margin-top:20px;"><b>Daum Equation Editor</b> requires Adobe Flash Player 10 or higher.<br/><br/>Please download Adobe Flash Player : <a href="http://get.adobe.com/flashplayer/" target="_blank">download</a></div>
+		</div>
+	</div>
+</body>
+</html>
