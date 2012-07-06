@@ -22,20 +22,34 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 	<script type="text/javascript">
 
-	// You will modify next two functions.
-        function pencil_insert_equation(equationData, texCode) {
-			//console.log(texCode);
-			pencil_close();
-        }
-        
-        function pencil_close() {
-        }
+	//You have to modify next two functions.
+
+	function pencil_result(formattedTex, rawTex) {
+		//User clicks "Insert" button in Equation Editor, Then this function called.
+		//To keep equation format - color, bg, font ... -, You have to save "formattedTex" variable to database. 
+		//ex)
+		//saveToServer(formattedTex);
+	}
+
+	function loadFormattedTex(){
+		//This function called automatically.
+		//Load data from opener window and assign data to "value" variable.
+		//ex)
+		//var formattedTex = loadFromFormattedTex();
+		var  formattedTex =  "";
+
+		//Don't modify below code.
+		pencil_load_history_data(formattedTex);
+	}
+
+	function pencil_close() {
+		window.close();
+	}
 
 	// Don't modify any codes.
 	// ------------------------------------------------------------------------
 
 	var swf_name = "Pencil_publicedition";
-	var history_data = "";
 
 	function pencil_ref(){
 		return document.getElementById(swf_name);
@@ -47,6 +61,7 @@
 
 	function pencil_init_focus(){
 		pencil_ref().focus();
+		loadFormattedTex();
 	}
 
 	function getFlashvars(){
@@ -61,7 +76,7 @@
 		if(language.substring(0, 2) != "ko" && language.substring(0, 2) != "en") language = "en_US"
 		return {
 			"service" : "daumEquationEditor",
-			"locale" : language,
+			"locale" : language
 		};
 	}
 
@@ -77,11 +92,8 @@
 	attributes.name = swf_name;
 	attributes.align = "middle";
 
-	var flashvars = getFlashvars();
-	flashvars.history_data = history_data;
-
 	if(swfobject){
-		swfobject.embedSWF("pencil.swf", "flashContent","100%", "100%", "10.0.0", "", flashvars, params, attributes);
+		swfobject.embedSWF("pencil.swf", "flashContent","100%", "100%", "10.0.0", "", getFlashvars(), params, attributes);
 	}
 
 	swfobject.createCSS("#flashContent", "display:block;");
